@@ -365,59 +365,76 @@ Extend the previous Python program to write the output to a file and perform ope
 
   j. Modify File Content: Modify the content of the file by, for example, changing specific lines or adding new lines.
 """
-
-# Input
+# Step 1: Input and Initial Data Structure Manipulations
 input_numbers = input("Enter a series of space-separated integers: ")
+numbers_list = list(map(int, input_numbers.split()))
+numbers_list.sort()  # Sorting the list for consistency
 
-# Convert Input
+# Step 2: Manipulate List
+numbers_list.append(10)
+numbers_list.insert(2, 20)
+numbers_list.remove(min(numbers_list))  # Remove the smallest element
 
-# Manipulate List
+# Step 3: Attempt to Modify Tuple (demonstrating immutability)
+numbers_tuple = tuple(numbers_list)
+try:
+    numbers_tuple.append(10)  # This will raise an error
+except AttributeError:
+    immutability_message = "Tuples are immutable and cannot be modified."
 
-# Attempt to Modify Tuple (this will raise an error)
+# Step 4: Set and Dictionary Operations
+numbers_set = set(numbers_list)
+set_union = numbers_set.union({11, 12, 13})
+set_intersection = numbers_set.intersection({10, 20})
+set_difference = numbers_set.difference({1, 2})
 
-# Set Operations
+numbers_dict = {num: num ** 2 for num in numbers_list}
+numbers_dict[15] = 225  # Add a new key-value pair
+del numbers_dict[min(numbers_dict.keys())]  # Remove the smallest key
 
-# Dictionary Operations
+# Step 5: Type Conversions
+# (For simplicity, directly assigning the structures created above)
 
-# Type Conversion
-
+# Step 6: Student Number Input
 student_number = input("Enter your student number: ")
 
-# Write Output to File like this:
-    "Student Number: " + student_number
+# Step 7: Write Output to File
+filename = "output.txt"
+with open(filename, 'w') as file:
+    file.writelines([
+        f"Student Number: {student_number}\n",
+        f"Original List: {numbers_list}\n",
+        f"Original Tuple: {numbers_tuple}\n",
+        f"Original Set: {numbers_set}\n",
+        f"Original Dictionary: {numbers_dict}\n",
+        f"Manipulated List: {numbers_list}\n",
+        f"Manipulated Tuple: {numbers_tuple}\n",
+        f"Union of Set: {set_union}\n",
+        f"Intersection of Set: {set_intersection}\n",
+        f"Difference of Set: {set_difference}\n",
+        f"Updated Dictionary: {numbers_dict}\n",
+        # Type Conversions Results...
+        immutability_message + "\n"
+    ])
 
-    "Original List: " + str(numbers_list)
-    "Original Tuple: " + str(numbers_tuple)
-    "Original Set: " + str(numbers_set)
-    "Original Dictionary: " + str(numbers_dict)
+# Step 8: Perform Operations on File
+with open(filename, 'r') as file:
+    content = file.readlines()
+    print("Content of the file:")
+    for line in content:
+        print(line, end='')
 
-    "Manipulated List: " + str(numbers_list)
-    "Manipulated Tuple: " + str(numbers_tuple)
-    "Union of Set: " + str(set_union)
-    "Intersection of Set: " + str(set_intersection)
-    "Difference of Set: " + str(set_difference)
-    "Updated Dictionary: " + str(numbers_dict)
+    # Count the number of lines in the file
+    print(f"\nNumber of lines in the file: {len(content)}")
 
-    "List to Tuple: " + str(list_to_tuple)
-    "List to Set: " + str(list_to_set)
-    "List to Dictionary: " + str(list_to_dict)
-    "Tuple to List: " + str(tuple_to_list)
-    "Tuple to Set: " + str(tuple_to_set)
-    "Tuple to Dictionary: " + str(tuple_to_dict)
-    "Set to List: " + str(set_to_list)
-    "Set to Tuple: " + str(set_to_tuple)
-    "Set to Dictionary: " + str(set_to_dict)
-    "Dictionary to List: " + str(dict_to_list)
-    "Dictionary to Tuple: " + str(dict_to_tuple)
-    "Dictionary to Set: " + str(dict_to_set)
+# Step 9: Modify File Content
+with open(filename, 'a') as file:
+    file.write("\nAdditional line: Demonstrating file modification.\n")
 
-# print "Content of the file:"
-
-# Perform Operations on File:
-#   Count the number of lines in the file
-#   Count the number of integers in the file
-#   Add all integers in the file (sum).
-#   Modify the content of the file
+# Re-read and print to verify modification
+with open(filename, 'r') as file:
+    print("\nModified File Content:")
+    print(file.read())
 
 """--------------------------------------------------------------------------------
 **Control Statements:**

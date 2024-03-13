@@ -192,32 +192,40 @@ Additionally, introduce sets and dictionaries and perform basic operations on th
 
   ```
 """
-
 # Input
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input
+numbers_list = list(map(int, input_numbers.split()))
+
+# Creating a Tuple from the List
+numbers_tuple = tuple(numbers_list)
 
 # Manipulate List
-# Append 10 to the list
-# Insert 20 at index 2
-# Remove the element 8
+numbers_list.append(10)  # Append 10 to the list
+numbers_list.insert(2, 20)  # Insert 20 at index 2
+if 8 in numbers_list:  # Remove 8 from the list if it exists
+    numbers_list.remove(8)
 
-# Attempt to Modify Tuple (this will raise an error)
+# Attempt to Modify Tuple
 try:
-    # Append 10 to the tuple
+    # Uncomment below to attempt to modify the tuple, which will raise an AttributeError
+    # numbers_tuple.append(10)
+    pass
 except AttributeError:
     print("Tuples are immutable and cannot be modified.")
 
 # Set Operations
-# Union
-# Intersection
-# Difference
+numbers_set = set(numbers_list)
+set_union = numbers_set.union({10, 11, 12})
+set_intersection = numbers_set.intersection({5, 8, 10})
+set_difference = numbers_set.difference({2, 9})
 
 # Dictionary Operations
-print("Original Dictionary:", numbers_dict)
-# Add a new key-value pair
-# Delete an existing key-value pair
+numbers_dict = {num: num ** 2 for num in numbers_list}
+numbers_dict[11] = 121  # Add a new key-value pair
+if 2 in numbers_dict:  # Delete an existing key-value pair
+    del numbers_dict[2]
 
 # Print Output
 print("Modified list:", numbers_list)
@@ -226,6 +234,7 @@ print("Union of set:", set_union)
 print("Intersection of set:", set_intersection)
 print("Difference of set:", set_difference)
 print("Updated Dictionary:", numbers_dict)
+
 
 """7. **Built-in Types and Type Conversion**
 

@@ -1,4 +1,4 @@
 # Lab2
-# My Name
-##Student ID: <id>
-## Group Number: <xx>
+# Azad Kilic
+##Student ID: s28247
+## Group Number: 21c

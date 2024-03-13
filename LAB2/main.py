@@ -27,6 +27,7 @@ Write a Python program that takes input from the user to create a list of intege
   ```
 """
 
+
 # Input
 input_numbers = input("Enter a series of space-separated integers: ")
 
@@ -70,21 +71,18 @@ Extend the previous Python program to include tuples. Now, in addition to creati
   ```
 """
 
-# Step a: Input (reuse from Task 3)
+# Input
 input_numbers = input("Enter a series of space-separated integers: ")
 
-# Step b: Convert Input to List (reuse from Task 3)
-numbers_list = list(map(int, input_numbers.split()))
+# Convert Input:
 
-# Step c: Sorting List (reuse from Task 3)
-numbers_list.sort()
 
-# Creating a Tuple from the List
-numbers_tuple = tuple(numbers_list)
+# Sorting:
 
-# Printing both the List and Tuple
+
+# Print Output
 print("Sorted list:", numbers_list)
-print("Sorted tuple:", numbers_tuple)
+print("Sorted tuple:", sorted_tuple)
 
 """5.
 Extend the previous Python program to demonstrate the manipulation of lists using the append(), insert(), and remove() functions, and to emphasize the immutability of tuples.

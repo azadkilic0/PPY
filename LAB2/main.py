@@ -493,6 +493,47 @@ These are fundamental constructs in Python programming that enable you to contro
 
   The program will generate the list of prime numbers up to 20, perform calculations, and write the results to 'prime_numbers.txt'.
 """
+def is_prime(n):
+    """Check if a number is a prime number."""
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def find_primes_up_to_n(n):
+    """Generate a list of all prime numbers up to n."""
+    return [num for num in range(2, n + 1) if is_prime(num)]
+
+# Reading the largest integer from 'output.txt'
+largest_int = 0
+with open('output.txt', 'r') as file:
+    for line in file:
+        if line.startswith('Largest prime number:'):
+            largest_int = int(line.split(': ')[1])
+            break
+
+if largest_int == 0:
+    print("Largest integer not found in the file.")
+else:
+    # Generate and process prime numbers based on the largest integer
+    primes = find_primes_up_to_n(largest_int)
+    sum_of_primes = sum(primes)
+    largest_prime = max(primes) if primes else None
+    smallest_prime = min(primes) if primes else None
+    is_largest_int_prime = is_prime(largest_int)
+
+    # Write results to 'prime_numbers.txt'
+    with open('prime_numbers.txt', 'w') as file:
+        file.write(f"List of prime numbers up to {largest_int}: {primes}\n")
+        file.write(f"Sum of prime numbers: {sum_of_primes}\n")
+        file.write(f"Largest prime number: {largest_prime}\n")
+        file.write(f"Smallest prime number: {smallest_prime}\n")
+        file.write(f"The largest integer {largest_int} is {'a prime' if is_largest_int_prime else 'not a prime'}.")
+
+    # Output to console for verification
+    print(f"Processed prime numbers up to the largest integer {largest_int} and wrote the results to 'prime_numbers.txt'.")
 
 
 

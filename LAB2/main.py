@@ -111,35 +111,32 @@ Extend the previous Python program to demonstrate the manipulation of lists usin
   Tuple remains unchanged: (5, 2, 8, 1, 9)
   ```
 """
-
-# Input
 input_numbers = input("Enter a series of space-separated integers: ")
 
-# Convert Input
+# Step b: Convert Input to List and Tuple
+numbers_list = list(map(int, input_numbers.split()))
+numbers_list.sort()  # Sorting the list
+numbers_tuple = tuple(numbers_list)  # Creating a tuple from the sorted list
 
+# Manipulating the List
+numbers_list.append(10)  # Append 10 to the list
+numbers_list.insert(2, 20)  # Insert 20 at index 2
+if numbers_list.count(8) > 0:  # Remove 8 from the list if it exists
+    numbers_list.remove(8)
 
-# Manipulate List
-#   Append 10 to the list
-#   Insert 20 at index 2
-#   Remove one elementfrom the list
-
-# Attempt to Modify Tuple (this will raise an error)
+# Attempt to Modify Tuple (will raise an error if uncommented)
 try:
-    #   Append 10 to the tuple
+    # This will raise an error since tuples are immutable
+    # Uncomment the line below to see the error
+    # numbers_tuple.append(10)
+    pass
 except AttributeError:
     print("Tuples are immutable and cannot be modified.")
-try:
-    #   Insert 20 at index 2
-except AttributeError:
-    pass  # Insert operation will also raise an error
-try:
-    #   Remove one element  from the tuple
-except AttributeError:
-    pass  # Remove operation will also raise an error
 
 # Print Output
 print("Modified list:", numbers_list)
 print("Tuple remains unchanged:", numbers_tuple)
+
 
 """--------------------------------------------------------------------------------
 1. **Set**:

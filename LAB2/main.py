@@ -418,6 +418,24 @@ with open(filename, 'w') as file:
 
 print("Task 8 completed and output.txt has been created.")
 
+# i. Perform Operations on File: Count the number of lines and print
+with open(filename, 'r') as file:
+    content = file.readlines()
+    print(f"Number of lines in the file: {len(content)}")
+    # Example operation: Print lines that mention "Set"
+    print("Lines mentioning 'Set':")
+    for line in content:
+        if "Set" in line:
+            print(line.strip())
+
+# j. Modify File Content: Adding a summary at the end
+with open(filename, 'a') as file:
+    file.write("\nSummary: Demonstrated data structure manipulations, type conversions, and file operations.\n")
+
+# Optionally, re-read to verify modification
+with open(filename, 'r') as file:
+    print("\nModified File Content:")
+    print(file.read())
 
 """--------------------------------------------------------------------------------
 **Control Statements:**

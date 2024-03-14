@@ -408,33 +408,16 @@ with open(filename, 'w') as file:
         f"Original Set: {numbers_set}\n",
         f"Original Dictionary: {numbers_dict}\n",
         f"Manipulated List: {numbers_list}\n",
-        f"Manipulated Tuple: {numbers_tuple}\n",
+        f"Manipulated Tuple: Cannot be modified due to immutability.\n",
         f"Union of Set: {set_union}\n",
         f"Intersection of Set: {set_intersection}\n",
         f"Difference of Set: {set_difference}\n",
         f"Updated Dictionary: {numbers_dict}\n",
-        # Type Conversions Results...
         immutability_message + "\n"
     ])
 
-# Step 8: Perform Operations on File
-with open(filename, 'r') as file:
-    content = file.readlines()
-    print("Content of the file:")
-    for line in content:
-        print(line, end='')
+print("Task 8 completed and output.txt has been created.")
 
-    # Count the number of lines in the file
-    print(f"\nNumber of lines in the file: {len(content)}")
-
-# Step 9: Modify File Content
-with open(filename, 'a') as file:
-    file.write("\nAdditional line: Demonstrating file modification.\n")
-
-# Re-read and print to verify modification
-with open(filename, 'r') as file:
-    print("\nModified File Content:")
-    print(file.read())
 
 """--------------------------------------------------------------------------------
 **Control Statements:**

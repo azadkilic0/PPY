@@ -489,25 +489,27 @@ def find_primes_up_to_n(n):
     """Generate a list of all prime numbers up to n."""
     return [num for num in range(2, n + 1) if is_prime(num)]
 
-# Reading the largest integer from 'output.txt'
+# Adjusting to read the largest integer from 'output.txt' correctly
 largest_int = 0
 with open('output.txt', 'r') as file:
-    for line in file:
-        if line.startswith('Largest prime number:'):
-            largest_int = int(line.split(': ')[1])
+    lines = file.readlines()
+    # Assuming the manipulated list is correctly formatted and present
+    for line in lines:
+        if "Manipulated List:" in line:
+            # Extract numbers from this line
+            numbers = eval(line.split(": ")[1])
+            largest_int = max(numbers)
             break
 
 if largest_int == 0:
     print("Largest integer not found in the file.")
 else:
-    # Generate and process prime numbers based on the largest integer
     primes = find_primes_up_to_n(largest_int)
     sum_of_primes = sum(primes)
     largest_prime = max(primes) if primes else None
     smallest_prime = min(primes) if primes else None
     is_largest_int_prime = is_prime(largest_int)
 
-    # Write results to 'prime_numbers.txt'
     with open('prime_numbers.txt', 'w') as file:
         file.write(f"List of prime numbers up to {largest_int}: {primes}\n")
         file.write(f"Sum of prime numbers: {sum_of_primes}\n")
@@ -515,9 +517,7 @@ else:
         file.write(f"Smallest prime number: {smallest_prime}\n")
         file.write(f"The largest integer {largest_int} is {'a prime' if is_largest_int_prime else 'not a prime'}.")
 
-    # Output to console for verification
     print(f"Processed prime numbers up to the largest integer {largest_int} and wrote the results to 'prime_numbers.txt'.")
-
 
 
 """10.
